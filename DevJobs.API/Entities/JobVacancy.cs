@@ -1,7 +1,6 @@
-
 namespace DevJobs.API.Entities
 {
-   public class JobVacancy
+    public class JobVacancy
     {
         public JobVacancy(string title, string description, string company, bool isRemote, string salaryRange)
         {

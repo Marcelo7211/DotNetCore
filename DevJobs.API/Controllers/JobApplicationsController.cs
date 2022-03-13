@@ -17,7 +17,7 @@ namespace DevJobs.API.Controllers
 
         // POST api/job-vacancies/4/applications
         [HttpPost]
-        public IActionResult Post(int id, AddJobApplicationDTO model)
+        public IActionResult Post(int id, AddJobApplicationInputModel model)
         {
             var jobVacancy = _context.JobVacancies
                 .SingleOrDefault(jv => jv.Id == id);
@@ -31,9 +31,10 @@ namespace DevJobs.API.Controllers
                 id
             );
 
-            jobVacancy.Applications.Add(application);
-
-            return Ok(jobVacancy);
+            _context.JobApplications.Add(application);
+            _context.SaveChanges();
+            
+            return NoContent();
         }
     }
 }
